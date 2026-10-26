@@ -1,0 +1,17 @@
+import {abi} from 'genlayer-js';
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {fixture,fixtureEdges,checkOrder,levels,validateDraft,escapeHtml} from '../src/model.js';
+test('publication order observes every prerequisite',()=>assert.deepEqual(checkOrder(['S1','S2','S3','S4','S5'],fixtureEdges),[]));
+test('early opening exposes the final prerequisite',()=>assert.deepEqual(checkOrder(['S5','S1','S2','S3','S4'],fixtureEdges),[['S4','S5']]));
+test('parallel steps remain in one level',()=>assert.deepEqual(levels(['S1','S2','S3'],[['S1','S3'],['S2','S3']]),{levels:[['S1','S2'],['S3']],blocked:[]}));
+test('cycles cannot be repaired by sorting',()=>assert.deepEqual(levels(['S1','S2','S3'],[['S1','S2'],['S2','S1']]),{levels:[['S3']],blocked:['S1','S2']}));
+test('duplicate task names are rejected',()=>assert.throws(()=>validateDraft({...fixture,steps:[{id:'S1',text:'Same'},{id:'S2',text:'same'}]})));
+test('source text is not rendered as HTML',()=>assert.equal(escapeHtml('<img onerror="alert(1)">'),'&lt;img onerror=&quot;alert(1)&quot;&gt;'));
+import {verifyReceipt} from '../src/receipts.js';
+const intent={address:'0xabc',from:'0xdef',functionName:'seal',args:['slug','{}']};
+const receipt={status:7,result:6,to_address:'0xabc',from_address:'0xdef',data:{calldata:{base64:btoa(String.fromCharCode(...abi.calldata.encode(abi.calldata.makeCalldataObject('seal',['slug','{}']))))}},consensus_data:{leader_receipt:[{mode:'leader',execution_result:'SUCCESS'}]}};
+test('numeric finalized accepted receipt verifies its intent',()=>assert.equal(verifyReceipt(receipt,intent),receipt));
+test('success text in a failed receipt cannot pass',()=>assert.throws(()=>verifyReceipt({...receipt,result:7},intent)));
+test('pending is not finality',()=>assert.throws(()=>verifyReceipt({...receipt,status:5},intent)));
+test('another method cannot verify this request',()=>assert.throws(()=>verifyReceipt(receipt,{...intent,functionName:'publish'})));

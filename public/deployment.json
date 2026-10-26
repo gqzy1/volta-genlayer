@@ -1,0 +1,7 @@
+{
+  "address": "0x1586f91c56b4983E312898627444CdF0A8ddfdee",
+  "chain_id": 61999,
+  "protocol": "volta-1.1",
+  "source_sha256": "df3df3a1ca612772f9f971be91b153a480c7583a251c26e2f2570c3cb5736874",
+  "deployment_tx": "0x335b72b07e7fef9d5f22fd343e16e42cf7ff08bbb27b6715d79b0ae97e524bc4"
+}
