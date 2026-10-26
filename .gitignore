@@ -1,5 +1,6 @@
 node_modules/
 dist/
-.openai/
+.openai/*
+!.openai/hosting.json
 *.local
 __pycache__/

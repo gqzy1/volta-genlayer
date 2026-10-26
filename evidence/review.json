@@ -1,0 +1,149 @@
+{
+  "assessment": {
+    "mapping": [
+      "GROUNDED",
+      "GROUNDED",
+      "GROUNDED",
+      "GROUNDED",
+      "GROUNDED"
+    ],
+    "pairs": [
+      {
+        "a": "S1",
+        "b": "S2",
+        "quote": "The curator must approve the object list before the registrar can issue loan agreements. Loan agreements must be signed before the transport team may collect the sculptures.",
+        "reason": "Source explicitly states curator approval precedes issuance of loan agreements, and loan agreements must be signed (S2) before collection (S3), entailing S1 before S2 through explicit chain.",
+        "relation": "A_BEFORE_B"
+      },
+      {
+        "a": "S1",
+        "b": "S3",
+        "quote": "The curator must approve the object list before the registrar can issue loan agreements. Loan agreements must be signed before the transport team may collect the sculptures.",
+        "reason": "S1 must precede S2 and S2 must precede S3 per explicit source statements, so S1 before S3 follows by explicit prerequisite chain.",
+        "relation": "A_BEFORE_B"
+      },
+      {
+        "a": "S1",
+        "b": "S4",
+        "quote": "The curator must approve the object list before the registrar can issue loan agreements. Loan agreements must be signed before the transport team may collect the sculptures. The transport team must collect the sculptures before the installation team can install them.",
+        "reason": "Explicit chain S1→S2→S3→S4 is fully grounded in the source, establishing S1 must occur before S4.",
+        "relation": "A_BEFORE_B"
+      },
+      {
+        "a": "S1",
+        "b": "S5",
+        "quote": "The exhibition opens only after the curator has approved the object list.",
+        "reason": "Source explicitly states the exhibition opens only after curator approval of the object list, making S1 a direct prerequisite for S5.",
+        "relation": "A_BEFORE_B"
+      },
+      {
+        "a": "S2",
+        "b": "S3",
+        "quote": "Loan agreements must be signed before the transport team may collect the sculptures.",
+        "reason": "Source explicitly requires loan agreements to be signed (S2) before the transport team collects the sculptures (S3).",
+        "relation": "A_BEFORE_B"
+      },
+      {
+        "a": "S2",
+        "b": "S4",
+        "quote": "Loan agreements must be signed before the transport team may collect the sculptures. The transport team must collect the sculptures before the installation team can install them.",
+        "reason": "Explicit chain S2→S3→S4 is grounded in the source, establishing S2 must occur before S4.",
+        "relation": "A_BEFORE_B"
+      },
+      {
+        "a": "S2",
+        "b": "S5",
+        "quote": "Loan agreements must be signed before the transport team may collect the sculptures. The transport team must collect the sculptures before the installation team can install them. Installation must be completed before the exhibition opens.",
+        "reason": "Explicit chain S2→S3→S4→S5 is fully grounded in source, establishing S2 must occur before S5.",
+        "relation": "A_BEFORE_B"
+      },
+      {
+        "a": "S3",
+        "b": "S4",
+        "quote": "The transport team must collect the sculptures before the installation team can install them.",
+        "reason": "Source explicitly states collection (S3) must occur before installation (S4).",
+        "relation": "A_BEFORE_B"
+      },
+      {
+        "a": "S3",
+        "b": "S5",
+        "quote": "The transport team must collect the sculptures before the installation team can install them. Installation must be completed before the exhibition opens.",
+        "reason": "Explicit chain S3→S4→S5 is grounded in the source, establishing S3 must occur before S5.",
+        "relation": "A_BEFORE_B"
+      },
+      {
+        "a": "S4",
+        "b": "S5",
+        "quote": "Installation must be completed before the exhibition opens.",
+        "reason": "Source explicitly states installation (S4) must be completed before the exhibition opens (S5).",
+        "relation": "A_BEFORE_B"
+      }
+    ]
+  },
+  "book_id": "0x9e682033129d42b6e14e8ac6d8d0cb9358a23396:exhibition-20261026",
+  "graph": {
+    "blocked": [],
+    "edges": [
+      [
+        "S1",
+        "S2"
+      ],
+      [
+        "S1",
+        "S3"
+      ],
+      [
+        "S1",
+        "S4"
+      ],
+      [
+        "S1",
+        "S5"
+      ],
+      [
+        "S2",
+        "S3"
+      ],
+      [
+        "S2",
+        "S4"
+      ],
+      [
+        "S2",
+        "S5"
+      ],
+      [
+        "S3",
+        "S4"
+      ],
+      [
+        "S3",
+        "S5"
+      ],
+      [
+        "S4",
+        "S5"
+      ]
+    ],
+    "levels": [
+      [
+        "S1"
+      ],
+      [
+        "S2"
+      ],
+      [
+        "S3"
+      ],
+      [
+        "S4"
+      ],
+      [
+        "S5"
+      ]
+    ],
+    "status": "ORDERABLE"
+  },
+  "input_hash": "5345c8c2023a715dfc9c1c5b0f3bfa247a4e67eef58e732a290281b787baf93c",
+  "revision": 1
+}

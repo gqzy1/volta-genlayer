@@ -1,0 +1,64 @@
+{
+  "assessment": {
+    "mapping": [
+      "GROUNDED",
+      "GROUNDED",
+      "GROUNDED"
+    ],
+    "pairs": [
+      {
+        "a": "S1",
+        "b": "S2",
+        "quote": "The editor must approve the catalogue text before the designer can export the print PDF.",
+        "reason": "Source explicitly states editor approval must occur before designer exports PDF.",
+        "relation": "A_BEFORE_B"
+      },
+      {
+        "a": "S1",
+        "b": "S3",
+        "quote": "The editor must approve the catalogue text before the designer can export the print PDF. The designer must export the print PDF before the printer can print the catalogue.",
+        "reason": "Transitive chain of explicit prerequisites: S1 before S2, S2 before S3, therefore S1 before S3.",
+        "relation": "A_BEFORE_B"
+      },
+      {
+        "a": "S2",
+        "b": "S3",
+        "quote": "The designer must export the print PDF before the printer can print the catalogue.",
+        "reason": "Source explicitly states designer must export PDF before printer can print catalogue.",
+        "relation": "A_BEFORE_B"
+      }
+    ]
+  },
+  "book_id": "0x625b86103001f923211a40dcfb5c9e457ac1205f:volta-mvp8djtb",
+  "graph": {
+    "blocked": [],
+    "edges": [
+      [
+        "S1",
+        "S2"
+      ],
+      [
+        "S1",
+        "S3"
+      ],
+      [
+        "S2",
+        "S3"
+      ]
+    ],
+    "levels": [
+      [
+        "S1"
+      ],
+      [
+        "S2"
+      ],
+      [
+        "S3"
+      ]
+    ],
+    "status": "ORDERABLE"
+  },
+  "input_hash": "25ebb5a2bc3541d70bc911fdfc1852c05cd5d9608dd3d327761b0cb163b2d975",
+  "revision": 1
+}

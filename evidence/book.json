@@ -1,0 +1,42 @@
+{
+  "certificate_hash": "34b08340aa196847926cdc1aa63773116b2137739ab9a7cd7f91c462785ec286",
+  "id": "0x9e682033129d42b6e14e8ac6d8d0cb9358a23396:exhibition-20261026",
+  "input": {
+    "source": "The curator must approve the object list before the registrar can issue loan agreements. Loan agreements must be signed before the transport team may collect the sculptures. The transport team must collect the sculptures before the installation team can install them. Installation must be completed before the exhibition opens. The exhibition opens only after the curator has approved the object list.",
+    "source_url": "",
+    "steps": [
+      {
+        "id": "S1",
+        "text": "Approve the object list"
+      },
+      {
+        "id": "S2",
+        "text": "Sign the loan agreements"
+      },
+      {
+        "id": "S3",
+        "text": "Collect the sculptures"
+      },
+      {
+        "id": "S4",
+        "text": "Install the sculptures"
+      },
+      {
+        "id": "S5",
+        "text": "Open the exhibition"
+      }
+    ],
+    "title": "Opening the sculpture exhibition"
+  },
+  "input_hash": "5345c8c2023a715dfc9c1c5b0f3bfa247a4e67eef58e732a290281b787baf93c",
+  "order": [
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5"
+  ],
+  "owner": "0x9e682033129d42b6e14e8ac6d8d0cb9358a23396",
+  "published": 1,
+  "revision": 1
+}

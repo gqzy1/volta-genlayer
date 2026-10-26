@@ -1,0 +1,32 @@
+{
+  "certificate_hash": "c5df95bc814a4a48c23a0617d3647ec57526fda2fe3aed6cc28636fbdc6fd54e",
+  "id": "0x625b86103001f923211a40dcfb5c9e457ac1205f:volta-mvp8djtb",
+  "input": {
+    "source": "The editor must approve the catalogue text before the designer can export the print PDF. The designer must export the print PDF before the printer can print the catalogue.",
+    "source_url": "",
+    "steps": [
+      {
+        "id": "S1",
+        "text": "Approve the catalogue text"
+      },
+      {
+        "id": "S2",
+        "text": "Export the print PDF"
+      },
+      {
+        "id": "S3",
+        "text": "Print the catalogue"
+      }
+    ],
+    "title": "Preparing a public exhibition catalogue"
+  },
+  "input_hash": "25ebb5a2bc3541d70bc911fdfc1852c05cd5d9608dd3d327761b0cb163b2d975",
+  "order": [
+    "S1",
+    "S2",
+    "S3"
+  ],
+  "owner": "0x625b86103001f923211a40dcfb5c9e457ac1205f",
+  "published": 1,
+  "revision": 1
+}

@@ -1,0 +1,1273 @@
+{
+  "hash": "0xbfc7bc7f614c6802f1d77e5ad1acc42543be2c3cd036846f18d454123850b00f",
+  "from_address": "0x9e682033129d42B6E14E8ac6D8D0CB9358a23396",
+  "to_address": "0x1586f91c56b4983E312898627444CdF0A8ddfdee",
+  "data": {
+    "calldata": {
+      "readable": "{\"args\":[\"0x9e682033129d42b6e14e8ac6d8d0cb9358a23396:exhibition-20261026\",0,]\"method\":\"assess\"}"
+    }
+  },
+  "status": 7,
+  "result": 6,
+  "consensus_data": {
+    "votes": {
+      "0x336458747913FE397be82c4F0926ACeB3ab13618": "agree",
+      "0x4619C8420D50c9dE477DB2CBb7b4863A041688CB": "disagree",
+      "0x4868b172ddEBC18b5219aaCeAB77ae0Df330c83A": "agree",
+      "0x63d72fE364368491E62a42B9C73c317Ce1ca8434": "agree",
+      "0xb04cdDC4a6Ff6A0aDF715cfe00Fa307b901cebD4": "disagree"
+    },
+    "leader_receipt": [
+      {
+        "execution_result": "SUCCESS",
+        "genvm_result": {
+          "stderr": "",
+          "stdout": "",
+          "raw_error": null,
+          "error_code": null,
+          "error_description": null
+        },
+        "mode": "leader",
+        "vote": null,
+        "node_config": {
+          "stake": 100,
+          "address": "0x336458747913FE397be82c4F0926ACeB3ab13618",
+          "primary_model": {
+            "model": "policy:prd-sonnet",
+            "config": {
+              "policy_ir": [
+                "policy",
+                [
+                  "and",
+                  [
+                    "meets_req"
+                  ],
+                  [
+                    "not",
+                    [
+                      "is",
+                      "disabled"
+                    ]
+                  ],
+                  [
+                    "cmp",
+                    "success_rate",
+                    "ge",
+                    0.2
+                  ],
+                  [
+                    "or",
+                    [
+                      "family_eq",
+                      "claude-sonnet-4-6"
+                    ],
+                    [
+                      "family_eq",
+                      "gpt-5.4"
+                    ],
+                    [
+                      "family_eq",
+                      "gemini-3-flash-preview"
+                    ]
+                  ]
+                ],
+                [
+                  "add",
+                  [
+                    "scale",
+                    100,
+                    [
+                      "gate",
+                      [
+                        "family_eq",
+                        "claude-sonnet-4-6"
+                      ],
+                      [
+                        "lit",
+                        1
+                      ]
+                    ]
+                  ],
+                  [
+                    "scale",
+                    10,
+                    [
+                      "gate",
+                      [
+                        "family_eq",
+                        "gpt-5.4"
+                      ],
+                      [
+                        "lit",
+                        1
+                      ]
+                    ]
+                  ],
+                  [
+                    "scale",
+                    1,
+                    [
+                      "gate",
+                      [
+                        "family_eq",
+                        "gemini-3-flash-preview"
+                      ],
+                      [
+                        "lit",
+                        1
+                      ]
+                    ]
+                  ],
+                  [
+                    "scale",
+                    0.25,
+                    [
+                      "neg",
+                      [
+                        "normalize",
+                        [
+                          "field",
+                          "price_in"
+                        ]
+                      ]
+                    ]
+                  ],
+                  [
+                    "scale",
+                    0.45,
+                    [
+                      "neg",
+                      [
+                        "normalize",
+                        [
+                          "field",
+                          "price_out"
+                        ]
+                      ]
+                    ]
+                  ],
+                  [
+                    "scale",
+                    0.2,
+                    [
+                      "field",
+                      "success_rate"
+                    ]
+                  ],
+                  [
+                    "scale",
+                    0.1,
+                    [
+                      "neg",
+                      [
+                        "normalize",
+                        [
+                          "field",
+                          "latency_ms"
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "argmax"
+                ],
+                [
+                  "id"
+                ],
+                [
+                  "always",
+                  {
+                    "action": "next_candidate"
+                  }
+                ]
+              ],
+              "timeout_ms": 22000,
+              "first_token_timeout_ms": 7000
+            },
+            "plugin": "openai-compatible",
+            "provider": "llm-router",
+            "plugin_config": {
+              "api_url": "https://router.ygr.ai",
+              "api_key_env_var": "LLM_ROUTER_API_KEY"
+            },
+            "fallback_validator": "0x63d72fE364368491E62a42B9C73c317Ce1ca8434"
+          },
+          "secondary_model": {
+            "model": "google/gemini-3-flash-preview",
+            "config": {
+              "models": [
+                "google/gemini-3-flash-preview",
+                "openai/gpt-5.4",
+                "anthropic/claude-sonnet-4.6"
+              ]
+            },
+            "plugin": "openai-compatible",
+            "address": "0x63d72fE364368491E62a42B9C73c317Ce1ca8434",
+            "provider": "openrouter",
+            "plugin_config": {
+              "api_url": "https://openrouter.ai/api",
+              "api_key_env_var": "OPENROUTERAPIKEY"
+            }
+          }
+        },
+        "calldata": {
+          "readable": "{\"args\":[\"0x9e682033129d42b6e14e8ac6d8d0cb9358a23396:exhibition-20261026\",0,]\"method\":\"assess\"}"
+        },
+        "eq_outputs": {
+          "0": {
+            "status": "return",
+            "payload": {
+              "readable": "{\"mapping\":[\"GROUNDED\",\"GROUNDED\",\"GROUNDED\",\"GROUNDED\",\"GROUNDED\",]\"pairs\":[{\"a\":\"S1\"\"b\":\"S2\"\"quote\":\"The curator must approve the object list before the registrar can issue loan agreements. Loan agreements must be signed before the transport team may collect the sculptures.\"\"reason\":\"Source explicitly states curator approval precedes issuance of loan agreements, and loan agreements must be signed (S2) before collection (S3), entailing S1 before S2 through explicit chain.\"\"relation\":\"A_BEFORE_B\"},{\"a\":\"S1\"\"b\":\"S3\"\"quote\":\"The curator must approve the object list before the registrar can issue loan agreements. Loan agreements must be signed before the transport team may collect the sculptures.\"\"reason\":\"S1 must precede S2 and S2 must precede S3 per explicit source statements, so S1 before S3 follows by explicit prerequisite chain.\"\"relation\":\"A_BEFORE_B\"},{\"a\":\"S1\"\"b\":\"S4\"\"quote\":\"The curator must approve the object list before the registrar can issue loan agreements. Loan agreements must be signed before the transport team may collect the sculptures. The transport team must collect the sculptures before the installation team can install them.\"\"reason\":\"Explicit chain S1→S2→S3→S4 is fully grounded in the source, establishing S1 must occur before S4.\"\"relation\":\"A_BEFORE_B\"},{\"a\":\"S1\"\"b\":\"S5\"\"quote\":\"The exhibition opens only after the curator has approved the object list.\"\"reason\":\"Source explicitly states the exhibition opens only after curator approval of the object list, making S1 a direct prerequisite for S5.\"\"relation\":\"A_BEFORE_B\"},{\"a\":\"S2\"\"b\":\"S3\"\"quote\":\"Loan agreements must be signed before the transport team may collect the sculptures.\"\"reason\":\"Source explicitly requires loan agreements to be signed (S2) before the transport team collects the sculptures (S3).\"\"relation\":\"A_BEFORE_B\"},{\"a\":\"S2\"\"b\":\"S4\"\"quote\":\"Loan agreements must be signed before the transport team may collect the sculptures. The transport team must collect the sculptures before the installation team can install them.\"\"reason\":\"Explicit chain S2→S3→S4 is grounded in the source, establishing S2 must occur before S4.\"\"relation\":\"A_BEFORE_B\"},{\"a\":\"S2\"\"b\":\"S5\"\"quote\":\"Loan agreements must be signed before the transport team may collect the sculptures. The transport team must collect the sculptures before the installation team can install them. Installation must be completed before the exhibition opens.\"\"reason\":\"Explicit chain S2→S3→S4→S5 is fully grounded in source, establishing S2 must occur before S5.\"\"relation\":\"A_BEFORE_B\"},{\"a\":\"S3\"\"b\":\"S4\"\"quote\":\"The transport team must collect the sculptures before the installation team can install them.\"\"reason\":\"Source explicitly states collection (S3) must occur before installation (S4).\"\"relation\":\"A_BEFORE_B\"},{\"a\":\"S3\"\"b\":\"S5\"\"quote\":\"The transport team must collect the sculptures before the installation team can install them. Installation must be completed before the exhibition opens.\"\"reason\":\"Explicit chain S3→S4→S5 is grounded in the source, establishing S3 must occur before S5.\"\"relation\":\"A_BEFORE_B\"},{\"a\":\"S4\"\"b\":\"S5\"\"quote\":\"Installation must be completed before the exhibition opens.\"\"reason\":\"Source explicitly states installation (S4) must be completed before the exhibition opens (S5).\"\"relation\":\"A_BEFORE_B\"},]}"
+            }
+          }
+        },
+        "result": {
+          "status": "return",
+          "payload": {
+            "readable": "\"{\\\"assessment\\\":{\\\"mapping\\\":[\\\"GROUNDED\\\",\\\"GROUNDED\\\",\\\"GROUNDED\\\",\\\"GROUNDED\\\",\\\"GROUNDED\\\"],\\\"pairs\\\":[{\\\"a\\\":\\\"S1\\\",\\\"b\\\":\\\"S2\\\",\\\"quote\\\":\\\"The curator must approve the object list before the registrar can issue loan agreements. Loan agreements must be signed before the transport team may collect the sculptures.\\\",\\\"reason\\\":\\\"Source explicitly states curator approval precedes issuance of loan agreements, and loan agreements must be signed (S2) before collection (S3), entailing S1 before S2 through explicit chain.\\\",\\\"relation\\\":\\\"A_BEFORE_B\\\"},{\\\"a\\\":\\\"S1\\\",\\\"b\\\":\\\"S3\\\",\\\"quote\\\":\\\"The curator must approve the object list before the registrar can issue loan agreements. Loan agreements must be signed before the transport team may collect the sculptures.\\\",\\\"reason\\\":\\\"S1 must precede S2 and S2 must precede S3 per explicit source statements, so S1 before S3 follows by explicit prerequisite chain.\\\",\\\"relation\\\":\\\"A_BEFORE_B\\\"},{\\\"a\\\":\\\"S1\\\",\\\"b\\\":\\\"S4\\\",\\\"quote\\\":\\\"The curator must approve the object list before the registrar can issue loan agreements. Loan agreements must be signed before the transport team may collect the sculptures. The transport team must collect the sculptures before the installation team can install them.\\\",\\\"reason\\\":\\\"Explicit chain S1\\\\u2192S2\\\\u2192S3\\\\u2192S4 is fully grounded in the source, establishing S1 must occur before S4.\\\",\\\"relation\\\":\\\"A_BEFORE_B\\\"},{\\\"a\\\":\\\"S1\\\",\\\"b\\\":\\\"S5\\\",\\\"quote\\\":\\\"The exhibition opens only after the curator has approved the object list.\\\",\\\"reason\\\":\\\"Source explicitly states the exhibition opens only after curator approval of the object list, making S1 a direct prerequisite for S5.\\\",\\\"relation\\\":\\\"A_BEFORE_B\\\"},{\\\"a\\\":\\\"S2\\\",\\\"b\\\":\\\"S3\\\",\\\"quote\\\":\\\"Loan agreements must be signed before the transport team may collect the sculptures.\\\",\\\"reason\\\":\\\"Source explicitly requires loan agreements to be signed (S2) before the transport team collects the sculptures (S3).\\\",\\\"relation\\\":\\\"A_BEFORE_B\\\"},{\\\"a\\\":\\\"S2\\\",\\\"b\\\":\\\"S4\\\",\\\"quote\\\":\\\"Loan agreements must be signed before the transport team may collect the sculptures. The transport team must collect the sculptures before the installation team can install them.\\\",\\\"reason\\\":\\\"Explicit chain S2\\\\u2192S3\\\\u2192S4 is grounded in the source, establishing S2 must occur before S4.\\\",\\\"relation\\\":\\\"A_BEFORE_B\\\"},{\\\"a\\\":\\\"S2\\\",\\\"b\\\":\\\"S5\\\",\\\"quote\\\":\\\"Loan agreements must be signed before the transport team may collect the sculptures. The transport team must collect the sculptures before the installation team can install them. Installation must be completed before the exhibition opens.\\\",\\\"reason\\\":\\\"Explicit chain S2\\\\u2192S3\\\\u2192S4\\\\u2192S5 is fully grounded in source, establishing S2 must occur before S5.\\\",\\\"relation\\\":\\\"A_BEFORE_B\\\"},{\\\"a\\\":\\\"S3\\\",\\\"b\\\":\\\"S4\\\",\\\"quote\\\":\\\"The transport team must collect the sculptures before the installation team can install them.\\\",\\\"reason\\\":\\\"Source explicitly states collection (S3) must occur before installation (S4).\\\",\\\"relation\\\":\\\"A_BEFORE_B\\\"},{\\\"a\\\":\\\"S3\\\",\\\"b\\\":\\\"S5\\\",\\\"quote\\\":\\\"The transport team must collect the sculptures before the installation team can install them. Installation must be completed before the exhibition opens.\\\",\\\"reason\\\":\\\"Explicit chain S3\\\\u2192S4\\\\u2192S5 is grounded in the source, establishing S3 must occur before S5.\\\",\\\"relation\\\":\\\"A_BEFORE_B\\\"},{\\\"a\\\":\\\"S4\\\",\\\"b\\\":\\\"S5\\\",\\\"quote\\\":\\\"Installation must be completed before the exhibition opens.\\\",\\\"reason\\\":\\\"Source explicitly states installation (S4) must be completed before the exhibition opens (S5).\\\",\\\"relation\\\":\\\"A_BEFORE_B\\\"}]},\\\"book_id\\\":\\\"0x9e682033129d42b6e14e8ac6d8d0cb9358a23396:exhibition-20261026\\\",\\\"graph\\\":{\\\"blocked\\\":[],\\\"edges\\\":[[\\\"S1\\\",\\\"S2\\\"],[\\\"S1\\\",\\\"S3\\\"],[\\\"S1\\\",\\\"S4\\\"],[\\\"S1\\\",\\\"S5\\\"],[\\\"S2\\\",\\\"S3\\\"],[\\\"S2\\\",\\\"S4\\\"],[\\\"S2\\\",\\\"S5\\\"],[\\\"S3\\\",\\\"S4\\\"],[\\\"S3\\\",\\\"S5\\\"],[\\\"S4\\\",\\\"S5\\\"]],\\\"levels\\\":[[\\\"S1\\\"],[\\\"S2\\\"],[\\\"S3\\\"],[\\\"S4\\\"],[\\\"S5\\\"]],\\\"status\\\":\\\"ORDERABLE\\\"},\\\"input_hash\\\":\\\"5345c8c2023a715dfc9c1c5b0f3bfa247a4e67eef58e732a290281b787baf93c\\\",\\\"revision\\\":1}\""
+          }
+        }
+      },
+      {
+        "execution_result": "SUCCESS",
+        "genvm_result": {
+          "stderr": "",
+          "stdout": "",
+          "raw_error": null,
+          "error_code": null,
+          "error_description": null
+        },
+        "mode": "validator",
+        "vote": "agree",
+        "node_config": {
+          "stake": 100,
+          "address": "0x336458747913FE397be82c4F0926ACeB3ab13618",
+          "primary_model": {
+            "model": "policy:prd-sonnet",
+            "config": {
+              "policy_ir": [
+                "policy",
+                [
+                  "and",
+                  [
+                    "meets_req"
+                  ],
+                  [
+                    "not",
+                    [
+                      "is",
+                      "disabled"
+                    ]
+                  ],
+                  [
+                    "cmp",
+                    "success_rate",
+                    "ge",
+                    0.2
+                  ],
+                  [
+                    "or",
+                    [
+                      "family_eq",
+                      "claude-sonnet-4-6"
+                    ],
+                    [
+                      "family_eq",
+                      "gpt-5.4"
+                    ],
+                    [
+                      "family_eq",
+                      "gemini-3-flash-preview"
+                    ]
+                  ]
+                ],
+                [
+                  "add",
+                  [
+                    "scale",
+                    100,
+                    [
+                      "gate",
+                      [
+                        "family_eq",
+                        "claude-sonnet-4-6"
+                      ],
+                      [
+                        "lit",
+                        1
+                      ]
+                    ]
+                  ],
+                  [
+                    "scale",
+                    10,
+                    [
+                      "gate",
+                      [
+                        "family_eq",
+                        "gpt-5.4"
+                      ],
+                      [
+                        "lit",
+                        1
+                      ]
+                    ]
+                  ],
+                  [
+                    "scale",
+                    1,
+                    [
+                      "gate",
+                      [
+                        "family_eq",
+                        "gemini-3-flash-preview"
+                      ],
+                      [
+                        "lit",
+                        1
+                      ]
+                    ]
+                  ],
+                  [
+                    "scale",
+                    0.25,
+                    [
+                      "neg",
+                      [
+                        "normalize",
+                        [
+                          "field",
+                          "price_in"
+                        ]
+                      ]
+                    ]
+                  ],
+                  [
+                    "scale",
+                    0.45,
+                    [
+                      "neg",
+                      [
+                        "normalize",
+                        [
+                          "field",
+                          "price_out"
+                        ]
+                      ]
+                    ]
+                  ],
+                  [
+                    "scale",
+                    0.2,
+                    [
+                      "field",
+                      "success_rate"
+                    ]
+                  ],
+                  [
+                    "scale",
+                    0.1,
+                    [
+                      "neg",
+                      [
+                        "normalize",
+                        [
+                          "field",
+                          "latency_ms"
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "argmax"
+                ],
+                [
+                  "id"
+                ],
+                [
+                  "always",
+                  {
+                    "action": "next_candidate"
+                  }
+                ]
+              ],
+              "timeout_ms": 22000,
+              "first_token_timeout_ms": 7000
+            },
+            "plugin": "openai-compatible",
+            "provider": "llm-router",
+            "plugin_config": {
+              "api_url": "https://router.ygr.ai",
+              "api_key_env_var": "LLM_ROUTER_API_KEY"
+            },
+            "fallback_validator": "0x63d72fE364368491E62a42B9C73c317Ce1ca8434"
+          },
+          "secondary_model": {
+            "model": "google/gemini-3-flash-preview",
+            "config": {
+              "models": [
+                "google/gemini-3-flash-preview",
+                "openai/gpt-5.4",
+                "anthropic/claude-sonnet-4.6"
+              ]
+            },
+            "plugin": "openai-compatible",
+            "address": "0x63d72fE364368491E62a42B9C73c317Ce1ca8434",
+            "provider": "openrouter",
+            "plugin_config": {
+              "api_url": "https://openrouter.ai/api",
+              "api_key_env_var": "OPENROUTERAPIKEY"
+            }
+          }
+        },
+        "calldata": {
+          "readable": "{\"args\":[\"0x9e682033129d42b6e14e8ac6d8d0cb9358a23396:exhibition-20261026\",0,]\"method\":\"assess\"}"
+        },
+        "result": {
+          "status": "return",
+          "payload": {
+            "readable": "\"{\\\"assessment\\\":{\\\"mapping\\\":[\\\"GROUNDED\\\",\\\"GROUNDED\\\",\\\"GROUNDED\\\",\\\"GROUNDED\\\",\\\"GROUNDED\\\"],\\\"pairs\\\":[{\\\"a\\\":\\\"S1\\\",\\\"b\\\":\\\"S2\\\",\\\"quote\\\":\\\"The curator must approve the object list before the registrar can issue loan agreements. Loan agreements must be signed before the transport team may collect the sculptures.\\\",\\\"reason\\\":\\\"Source explicitly states curator approval precedes issuance of loan agreements, and loan agreements must be signed (S2) before collection (S3), entailing S1 before S2 through explicit chain.\\\",\\\"relation\\\":\\\"A_BEFORE_B\\\"},{\\\"a\\\":\\\"S1\\\",\\\"b\\\":\\\"S3\\\",\\\"quote\\\":\\\"The curator must approve the object list before the registrar can issue loan agreements. Loan agreements must be signed before the transport team may collect the sculptures.\\\",\\\"reason\\\":\\\"S1 must precede S2 and S2 must precede S3 per explicit source statements, so S1 before S3 follows by explicit prerequisite chain.\\\",\\\"relation\\\":\\\"A_BEFORE_B\\\"},{\\\"a\\\":\\\"S1\\\",\\\"b\\\":\\\"S4\\\",\\\"quote\\\":\\\"The curator must approve the object list before the registrar can issue loan agreements. Loan agreements must be signed before the transport team may collect the sculptures. The transport team must collect the sculptures before the installation team can install them.\\\",\\\"reason\\\":\\\"Explicit chain S1\\\\u2192S2\\\\u2192S3\\\\u2192S4 is fully grounded in the source, establishing S1 must occur before S4.\\\",\\\"relation\\\":\\\"A_BEFORE_B\\\"},{\\\"a\\\":\\\"S1\\\",\\\"b\\\":\\\"S5\\\",\\\"quote\\\":\\\"The exhibition opens only after the curator has approved the object list.\\\",\\\"reason\\\":\\\"Source explicitly states the exhibition opens only after curator approval of the object list, making S1 a direct prerequisite for S5.\\\",\\\"relation\\\":\\\"A_BEFORE_B\\\"},{\\\"a\\\":\\\"S2\\\",\\\"b\\\":\\\"S3\\\",\\\"quote\\\":\\\"Loan agreements must be signed before the transport team may collect the sculptures.\\\",\\\"reason\\\":\\\"Source explicitly requires loan agreements to be signed (S2) before the transport team collects the sculptures (S3).\\\",\\\"relation\\\":\\\"A_BEFORE_B\\\"},{\\\"a\\\":\\\"S2\\\",\\\"b\\\":\\\"S4\\\",\\\"quote\\\":\\\"Loan agreements must be signed before the transport team may collect the sculptures. The transport team must collect the sculptures before the installation team can install them.\\\",\\\"reason\\\":\\\"Explicit chain S2\\\\u2192S3\\\\u2192S4 is grounded in the source, establishing S2 must occur before S4.\\\",\\\"relation\\\":\\\"A_BEFORE_B\\\"},{\\\"a\\\":\\\"S2\\\",\\\"b\\\":\\\"S5\\\",\\\"quote\\\":\\\"Loan agreements must be signed before the transport team may collect the sculptures. The transport team must collect the sculptures before the installation team can install them. Installation must be completed before the exhibition opens.\\\",\\\"reason\\\":\\\"Explicit chain S2\\\\u2192S3\\\\u2192S4\\\\u2192S5 is fully grounded in source, establishing S2 must occur before S5.\\\",\\\"relation\\\":\\\"A_BEFORE_B\\\"},{\\\"a\\\":\\\"S3\\\",\\\"b\\\":\\\"S4\\\",\\\"quote\\\":\\\"The transport team must collect the sculptures before the installation team can install them.\\\",\\\"reason\\\":\\\"Source explicitly states collection (S3) must occur before installation (S4).\\\",\\\"relation\\\":\\\"A_BEFORE_B\\\"},{\\\"a\\\":\\\"S3\\\",\\\"b\\\":\\\"S5\\\",\\\"quote\\\":\\\"The transport team must collect the sculptures before the installation team can install them. Installation must be completed before the exhibition opens.\\\",\\\"reason\\\":\\\"Explicit chain S3\\\\u2192S4\\\\u2192S5 is grounded in the source, establishing S3 must occur before S5.\\\",\\\"relation\\\":\\\"A_BEFORE_B\\\"},{\\\"a\\\":\\\"S4\\\",\\\"b\\\":\\\"S5\\\",\\\"quote\\\":\\\"Installation must be completed before the exhibition opens.\\\",\\\"reason\\\":\\\"Source explicitly states installation (S4) must be completed before the exhibition opens (S5).\\\",\\\"relation\\\":\\\"A_BEFORE_B\\\"}]},\\\"book_id\\\":\\\"0x9e682033129d42b6e14e8ac6d8d0cb9358a23396:exhibition-20261026\\\",\\\"graph\\\":{\\\"blocked\\\":[],\\\"edges\\\":[[\\\"S1\\\",\\\"S2\\\"],[\\\"S1\\\",\\\"S3\\\"],[\\\"S1\\\",\\\"S4\\\"],[\\\"S1\\\",\\\"S5\\\"],[\\\"S2\\\",\\\"S3\\\"],[\\\"S2\\\",\\\"S4\\\"],[\\\"S2\\\",\\\"S5\\\"],[\\\"S3\\\",\\\"S4\\\"],[\\\"S3\\\",\\\"S5\\\"],[\\\"S4\\\",\\\"S5\\\"]],\\\"levels\\\":[[\\\"S1\\\"],[\\\"S2\\\"],[\\\"S3\\\"],[\\\"S4\\\"],[\\\"S5\\\"]],\\\"status\\\":\\\"ORDERABLE\\\"},\\\"input_hash\\\":\\\"5345c8c2023a715dfc9c1c5b0f3bfa247a4e67eef58e732a290281b787baf93c\\\",\\\"revision\\\":1}\""
+          }
+        }
+      }
+    ],
+    "validators": [
+      {
+        "execution_result": "SUCCESS",
+        "genvm_result": {
+          "stderr": "",
+          "stdout": "",
+          "raw_error": null,
+          "error_code": null,
+          "error_description": null
+        },
+        "mode": "validator",
+        "vote": "agree",
+        "node_config": {
+          "stake": 100,
+          "address": "0x63d72fE364368491E62a42B9C73c317Ce1ca8434",
+          "primary_model": {
+            "model": "google/gemini-3-flash-preview",
+            "config": {
+              "models": [
+                "google/gemini-3-flash-preview",
+                "openai/gpt-5.4",
+                "anthropic/claude-sonnet-4.6"
+              ]
+            },
+            "plugin": "openai-compatible",
+            "provider": "openrouter",
+            "plugin_config": {
+              "api_url": "https://openrouter.ai/api",
+              "api_key_env_var": "OPENROUTERAPIKEY"
+            },
+            "fallback_validator": "0x378aED3bA912Ce77C3C66155961A7e61C2fE8F3B"
+          },
+          "secondary_model": {
+            "model": "policy:prd-kimi",
+            "config": {
+              "policy_ir": [
+                "policy",
+                [
+                  "and",
+                  [
+                    "meets_req"
+                  ],
+                  [
+                    "not",
+                    [
+                      "is",
+                      "disabled"
+                    ]
+                  ],
+                  [
+                    "cmp",
+                    "success_rate",
+                    "ge",
+                    0.2
+                  ],
+                  [
+                    "or",
+                    [
+                      "family_eq",
+                      "kimi-k2.7-code"
+                    ],
+                    [
+                      "family_eq",
+                      "claude-sonnet-4-6"
+                    ],
+                    [
+                      "family_eq",
+                      "gpt-5.4"
+                    ]
+                  ]
+                ],
+                [
+                  "add",
+                  [
+                    "scale",
+                    100,
+                    [
+                      "gate",
+                      [
+                        "family_eq",
+                        "kimi-k2.7-code"
+                      ],
+                      [
+                        "lit",
+                        1
+                      ]
+                    ]
+                  ],
+                  [
+                    "scale",
+                    10,
+                    [
+                      "gate",
+                      [
+                        "family_eq",
+                        "claude-sonnet-4-6"
+                      ],
+                      [
+                        "lit",
+                        1
+                      ]
+                    ]
+                  ],
+                  [
+                    "scale",
+                    1,
+                    [
+                      "gate",
+                      [
+                        "family_eq",
+                        "gpt-5.4"
+                      ],
+                      [
+                        "lit",
+                        1
+                      ]
+                    ]
+                  ],
+                  [
+                    "scale",
+                    0.25,
+                    [
+                      "neg",
+                      [
+                        "normalize",
+                        [
+                          "field",
+                          "price_in"
+                        ]
+                      ]
+                    ]
+                  ],
+                  [
+                    "scale",
+                    0.45,
+                    [
+                      "neg",
+                      [
+                        "normalize",
+                        [
+                          "field",
+                          "price_out"
+                        ]
+                      ]
+                    ]
+                  ],
+                  [
+                    "scale",
+                    0.2,
+                    [
+                      "field",
+                      "success_rate"
+                    ]
+                  ],
+                  [
+                    "scale",
+                    0.1,
+                    [
+                      "neg",
+                      [
+                        "normalize",
+                        [
+                          "field",
+                          "latency_ms"
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "argmax"
+                ],
+                [
+                  "id"
+                ],
+                [
+                  "always",
+                  {
+                    "action": "next_candidate"
+                  }
+                ]
+              ],
+              "timeout_ms": 22000,
+              "first_token_timeout_ms": 7000
+            },
+            "plugin": "openai-compatible",
+            "address": "0x378aED3bA912Ce77C3C66155961A7e61C2fE8F3B",
+            "provider": "llm-router",
+            "plugin_config": {
+              "api_url": "https://router.ygr.ai",
+              "api_key_env_var": "LLM_ROUTER_API_KEY"
+            }
+          }
+        }
+      },
+      {
+        "execution_result": "SUCCESS",
+        "genvm_result": {
+          "stderr": "",
+          "stdout": "",
+          "raw_error": null,
+          "error_code": null,
+          "error_description": null
+        },
+        "mode": "validator",
+        "vote": "disagree",
+        "node_config": {
+          "stake": 100,
+          "address": "0x4619C8420D50c9dE477DB2CBb7b4863A041688CB",
+          "primary_model": {
+            "model": "policy:prd-glm",
+            "config": {
+              "policy_ir": [
+                "policy",
+                [
+                  "and",
+                  [
+                    "meets_req"
+                  ],
+                  [
+                    "not",
+                    [
+                      "is",
+                      "disabled"
+                    ]
+                  ],
+                  [
+                    "cmp",
+                    "success_rate",
+                    "ge",
+                    0.2
+                  ],
+                  [
+                    "or",
+                    [
+                      "family_eq",
+                      "glm-5.1"
+                    ],
+                    [
+                      "family_eq",
+                      "gpt-oss-120b"
+                    ],
+                    [
+                      "family_eq",
+                      "gpt-5.4"
+                    ]
+                  ]
+                ],
+                [
+                  "add",
+                  [
+                    "scale",
+                    100,
+                    [
+                      "gate",
+                      [
+                        "family_eq",
+                        "glm-5.1"
+                      ],
+                      [
+                        "lit",
+                        1
+                      ]
+                    ]
+                  ],
+                  [
+                    "scale",
+                    10,
+                    [
+                      "gate",
+                      [
+                        "family_eq",
+                        "gpt-oss-120b"
+                      ],
+                      [
+                        "lit",
+                        1
+                      ]
+                    ]
+                  ],
+                  [
+                    "scale",
+                    1,
+                    [
+                      "gate",
+                      [
+                        "family_eq",
+                        "gpt-5.4"
+                      ],
+                      [
+                        "lit",
+                        1
+                      ]
+                    ]
+                  ],
+                  [
+                    "scale",
+                    0.25,
+                    [
+                      "neg",
+                      [
+                        "normalize",
+                        [
+                          "field",
+                          "price_in"
+                        ]
+                      ]
+                    ]
+                  ],
+                  [
+                    "scale",
+                    0.45,
+                    [
+                      "neg",
+                      [
+                        "normalize",
+                        [
+                          "field",
+                          "price_out"
+                        ]
+                      ]
+                    ]
+                  ],
+                  [
+                    "scale",
+                    0.2,
+                    [
+                      "field",
+                      "success_rate"
+                    ]
+                  ],
+                  [
+                    "scale",
+                    0.1,
+                    [
+                      "neg",
+                      [
+                        "normalize",
+                        [
+                          "field",
+                          "latency_ms"
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "argmax"
+                ],
+                [
+                  "id"
+                ],
+                [
+                  "always",
+                  {
+                    "action": "next_candidate"
+                  }
+                ]
+              ],
+              "timeout_ms": 22000,
+              "first_token_timeout_ms": 7000
+            },
+            "plugin": "openai-compatible",
+            "provider": "llm-router",
+            "plugin_config": {
+              "api_url": "https://router.ygr.ai",
+              "api_key_env_var": "LLM_ROUTER_API_KEY"
+            },
+            "fallback_validator": "0xb04cdDC4a6Ff6A0aDF715cfe00Fa307b901cebD4"
+          },
+          "secondary_model": {
+            "model": "openai/gpt-5.4",
+            "config": {
+              "models": [
+                "openai/gpt-5.4",
+                "anthropic/claude-sonnet-4.6",
+                "google/gemini-3-flash-preview"
+              ]
+            },
+            "plugin": "openai-compatible",
+            "address": "0xb04cdDC4a6Ff6A0aDF715cfe00Fa307b901cebD4",
+            "provider": "openrouter",
+            "plugin_config": {
+              "api_url": "https://openrouter.ai/api",
+              "api_key_env_var": "OPENROUTERAPIKEY"
+            }
+          }
+        }
+      },
+      {
+        "execution_result": "SUCCESS",
+        "genvm_result": {
+          "stderr": "",
+          "stdout": "",
+          "raw_error": null,
+          "error_code": null,
+          "error_description": null
+        },
+        "mode": "validator",
+        "vote": "agree",
+        "node_config": {
+          "stake": 100,
+          "address": "0x4868b172ddEBC18b5219aaCeAB77ae0Df330c83A",
+          "primary_model": {
+            "model": "policy:prd-gemini",
+            "config": {
+              "policy_ir": [
+                "policy",
+                [
+                  "and",
+                  [
+                    "meets_req"
+                  ],
+                  [
+                    "not",
+                    [
+                      "is",
+                      "disabled"
+                    ]
+                  ],
+                  [
+                    "cmp",
+                    "success_rate",
+                    "ge",
+                    0.2
+                  ],
+                  [
+                    "or",
+                    [
+                      "family_eq",
+                      "gemini-3-flash-preview"
+                    ],
+                    [
+                      "family_eq",
+                      "gpt-oss-120b"
+                    ],
+                    [
+                      "family_eq",
+                      "gpt-5.4"
+                    ]
+                  ]
+                ],
+                [
+                  "add",
+                  [
+                    "scale",
+                    100,
+                    [
+                      "gate",
+                      [
+                        "family_eq",
+                        "gemini-3-flash-preview"
+                      ],
+                      [
+                        "lit",
+                        1
+                      ]
+                    ]
+                  ],
+                  [
+                    "scale",
+                    10,
+                    [
+                      "gate",
+                      [
+                        "family_eq",
+                        "gpt-oss-120b"
+                      ],
+                      [
+                        "lit",
+                        1
+                      ]
+                    ]
+                  ],
+                  [
+                    "scale",
+                    1,
+                    [
+                      "gate",
+                      [
+                        "family_eq",
+                        "gpt-5.4"
+                      ],
+                      [
+                        "lit",
+                        1
+                      ]
+                    ]
+                  ],
+                  [
+                    "scale",
+                    0.25,
+                    [
+                      "neg",
+                      [
+                        "normalize",
+                        [
+                          "field",
+                          "price_in"
+                        ]
+                      ]
+                    ]
+                  ],
+                  [
+                    "scale",
+                    0.45,
+                    [
+                      "neg",
+                      [
+                        "normalize",
+                        [
+                          "field",
+                          "price_out"
+                        ]
+                      ]
+                    ]
+                  ],
+                  [
+                    "scale",
+                    0.2,
+                    [
+                      "field",
+                      "success_rate"
+                    ]
+                  ],
+                  [
+                    "scale",
+                    0.1,
+                    [
+                      "neg",
+                      [
+                        "normalize",
+                        [
+                          "field",
+                          "latency_ms"
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "argmax"
+                ],
+                [
+                  "id"
+                ],
+                [
+                  "always",
+                  {
+                    "action": "next_candidate"
+                  }
+                ]
+              ],
+              "timeout_ms": 22000,
+              "first_token_timeout_ms": 7000
+            },
+            "plugin": "openai-compatible",
+            "provider": "llm-router",
+            "plugin_config": {
+              "api_url": "https://router.ygr.ai",
+              "api_key_env_var": "LLM_ROUTER_API_KEY"
+            },
+            "fallback_validator": "0x4441Ebe37E72c039B73f1D6CF8C6DEe277FE547a"
+          },
+          "secondary_model": {
+            "model": "openai/gpt-5.4",
+            "config": {
+              "models": [
+                "openai/gpt-5.4",
+                "anthropic/claude-sonnet-4.6",
+                "google/gemini-3-flash-preview"
+              ]
+            },
+            "plugin": "openai-compatible",
+            "address": "0x4441Ebe37E72c039B73f1D6CF8C6DEe277FE547a",
+            "provider": "openrouter",
+            "plugin_config": {
+              "api_url": "https://openrouter.ai/api",
+              "api_key_env_var": "OPENROUTERAPIKEY"
+            }
+          }
+        }
+      },
+      {
+        "execution_result": "SUCCESS",
+        "genvm_result": {
+          "stderr": "",
+          "stdout": "",
+          "raw_error": null,
+          "error_code": null,
+          "error_description": null
+        },
+        "mode": "validator",
+        "vote": "disagree",
+        "node_config": {
+          "stake": 100,
+          "address": "0xb04cdDC4a6Ff6A0aDF715cfe00Fa307b901cebD4",
+          "primary_model": {
+            "model": "openai/gpt-5.4",
+            "config": {
+              "models": [
+                "openai/gpt-5.4",
+                "anthropic/claude-sonnet-4.6",
+                "google/gemini-3-flash-preview"
+              ]
+            },
+            "plugin": "openai-compatible",
+            "provider": "openrouter",
+            "plugin_config": {
+              "api_url": "https://openrouter.ai/api",
+              "api_key_env_var": "OPENROUTERAPIKEY"
+            },
+            "fallback_validator": "0x378aED3bA912Ce77C3C66155961A7e61C2fE8F3B"
+          },
+          "secondary_model": {
+            "model": "policy:prd-kimi",
+            "config": {
+              "policy_ir": [
+                "policy",
+                [
+                  "and",
+                  [
+                    "meets_req"
+                  ],
+                  [
+                    "not",
+                    [
+                      "is",
+                      "disabled"
+                    ]
+                  ],
+                  [
+                    "cmp",
+                    "success_rate",
+                    "ge",
+                    0.2
+                  ],
+                  [
+                    "or",
+                    [
+                      "family_eq",
+                      "kimi-k2.7-code"
+                    ],
+                    [
+                      "family_eq",
+                      "claude-sonnet-4-6"
+                    ],
+                    [
+                      "family_eq",
+                      "gpt-5.4"
+                    ]
+                  ]
+                ],
+                [
+                  "add",
+                  [
+                    "scale",
+                    100,
+                    [
+                      "gate",
+                      [
+                        "family_eq",
+                        "kimi-k2.7-code"
+                      ],
+                      [
+                        "lit",
+                        1
+                      ]
+                    ]
+                  ],
+                  [
+                    "scale",
+                    10,
+                    [
+                      "gate",
+                      [
+                        "family_eq",
+                        "claude-sonnet-4-6"
+                      ],
+                      [
+                        "lit",
+                        1
+                      ]
+                    ]
+                  ],
+                  [
+                    "scale",
+                    1,
+                    [
+                      "gate",
+                      [
+                        "family_eq",
+                        "gpt-5.4"
+                      ],
+                      [
+                        "lit",
+                        1
+                      ]
+                    ]
+                  ],
+                  [
+                    "scale",
+                    0.25,
+                    [
+                      "neg",
+                      [
+                        "normalize",
+                        [
+                          "field",
+                          "price_in"
+                        ]
+                      ]
+                    ]
+                  ],
+                  [
+                    "scale",
+                    0.45,
+                    [
+                      "neg",
+                      [
+                        "normalize",
+                        [
+                          "field",
+                          "price_out"
+                        ]
+                      ]
+                    ]
+                  ],
+                  [
+                    "scale",
+                    0.2,
+                    [
+                      "field",
+                      "success_rate"
+                    ]
+                  ],
+                  [
+                    "scale",
+                    0.1,
+                    [
+                      "neg",
+                      [
+                        "normalize",
+                        [
+                          "field",
+                          "latency_ms"
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "argmax"
+                ],
+                [
+                  "id"
+                ],
+                [
+                  "always",
+                  {
+                    "action": "next_candidate"
+                  }
+                ]
+              ],
+              "timeout_ms": 22000,
+              "first_token_timeout_ms": 7000
+            },
+            "plugin": "openai-compatible",
+            "address": "0x378aED3bA912Ce77C3C66155961A7e61C2fE8F3B",
+            "provider": "llm-router",
+            "plugin_config": {
+              "api_url": "https://router.ygr.ai",
+              "api_key_env_var": "LLM_ROUTER_API_KEY"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "gaslimit": 2,
+  "nonce": 2,
+  "created_at": "2026-10-26T12:22:57.956280+00:00",
+  "leader_only": false,
+  "execution_mode": "NORMAL",
+  "origin_address": "0x9e682033129d42B6E14E8ac6D8D0CB9358a23396",
+  "triggered_on": null,
+  "appeal_validators_timeout": false,
+  "sim_config": {
+    "signed_rollup_transaction": "0xf9018902808307a12094b7278a61aa25c888815afc32ad3cc52ff24fe57580b9012427241a990000000000000000000000009e682033129d42b6e14e8ac6d8d0cb9358a233960000000000000000000000001586f91c56b4983e312898627444cdf0a8ddfdee0000000000000000000000000000000000000000000000000000000000000005000000000000000000000000000000000000000000000000000000000000000300000000000000000000000000000000000000000000000000000000000000a0000000000000000000000000000000000000000000000000000000000000005bf859b85616046172677315f4033078396536383230333331323964343262366531346538616336643864306362393335386132333339363a65786869626974696f6e2d323032363130323601066d6574686f64346173736573730000000000008301e481a0f6ab3163123b4d6cbdb47246a12e7060591aa5fb3c9bc7a84a70c4004c26ff19a0259903e61703215515e00c53e350ff9a53180311bc222559d88b12d5bc5d4dcb"
+  },
+  "value_credited": false,
+  "sender": "0x9e682033129d42B6E14E8ac6D8D0CB9358a23396",
+  "recipient": "0x1586f91c56b4983E312898627444CdF0A8ddfdee",
+  "tx_id": "0xbfc7bc7f614c6802f1d77e5ad1acc42543be2c3cd036846f18d454123850b00f",
+  "activator": "0xCe0B66448435cA53665C954705Abd753515594Cf",
+  "last_leader": "0x336458747913FE397be82c4F0926ACeB3ab13618",
+  "result_name": "MAJORITY_AGREE",
+  "num_of_rounds": "3",
+  "last_round": {
+    "round": "2",
+    "leader_index": "0",
+    "votes_committed": "5",
+    "votes_revealed": "5",
+    "appeal_bond": "0",
+    "rotations_left": "1",
+    "result": 6,
+    "round_validators": [
+      "0x336458747913FE397be82c4F0926ACeB3ab13618",
+      "0x63d72fE364368491E62a42B9C73c317Ce1ca8434",
+      "0x4619C8420D50c9dE477DB2CBb7b4863A041688CB",
+      "0x4868b172ddEBC18b5219aaCeAB77ae0Df330c83A",
+      "0xb04cdDC4a6Ff6A0aDF715cfe00Fa307b901cebD4"
+    ],
+    "validator_votes_hash": [
+      "0xc368587f5f38ebad711058db771c55b211b008e77fb625fc842f0fb071747f9d",
+      "0x97db296ed22681acc25e2610173376576852f503e09f8abc55775e3c59bad5be",
+      "0xe267b5d0e359ac9d11f2732c1ce162c81cd86575b54bb7babd2ddfcdb0def767",
+      "0xd5f24138c696146827c5f0aedc49941a5dae8cd1d505cb5354a5779da8f79d4e",
+      "0x9c435b3b07eb3dc4e7fb9b6e56e3b89a2c1126303091f20b24a718bcf9fda8d4"
+    ],
+    "validator_votes": [
+      1,
+      1,
+      2,
+      1,
+      2
+    ],
+    "validator_votes_name": [
+      "AGREE",
+      "AGREE",
+      "DISAGREE",
+      "AGREE",
+      "DISAGREE"
+    ]
+  },
+  "type": 2,
+  "status_name": "FINALIZED"
+}

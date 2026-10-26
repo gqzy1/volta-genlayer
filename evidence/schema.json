@@ -1,0 +1,92 @@
+{
+  "ctor": {
+    "params": [],
+    "kwparams": {}
+  },
+  "methods": {
+    "assess": {
+      "params": [
+        [
+          "book_id",
+          "string"
+        ],
+        [
+          "expected_revision",
+          "int"
+        ]
+      ],
+      "kwparams": {},
+      "readonly": false,
+      "ret": "string",
+      "payable": false
+    },
+    "get_book": {
+      "params": [
+        [
+          "book_id",
+          "string"
+        ]
+      ],
+      "kwparams": {},
+      "readonly": true,
+      "ret": "string"
+    },
+    "get_protocol": {
+      "params": [],
+      "kwparams": {},
+      "readonly": true,
+      "ret": "string"
+    },
+    "get_review": {
+      "params": [
+        [
+          "book_id",
+          "string"
+        ],
+        [
+          "revision",
+          "int"
+        ]
+      ],
+      "kwparams": {},
+      "readonly": true,
+      "ret": "string"
+    },
+    "publish": {
+      "params": [
+        [
+          "book_id",
+          "string"
+        ],
+        [
+          "expected_revision",
+          "int"
+        ],
+        [
+          "order_json",
+          "string"
+        ]
+      ],
+      "kwparams": {},
+      "readonly": false,
+      "ret": "string",
+      "payable": false
+    },
+    "seal": {
+      "params": [
+        [
+          "slug",
+          "string"
+        ],
+        [
+          "payload",
+          "string"
+        ]
+      ],
+      "kwparams": {},
+      "readonly": false,
+      "ret": "string",
+      "payable": false
+    }
+  }
+}
