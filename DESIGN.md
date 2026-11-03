@@ -1,6 +1,6 @@
 # Design and mechanism
 
-VOLTA treats procedural order as a published interpretation of immutable text. Its core object is a complete prerequisite relation matrix, followed by deterministic topological analysis and terminal sequence publication. It does not monitor changing sources, reconcile two parties' clauses, grade a creative brief, reserve capacity, infer geographic access, deduplicate invoices or preserve an earlier consent epoch.
+VOLTA treats procedural order as a published interpretation of immutable text. Its core object is a complete prerequisite relation matrix, followed by deterministic topological analysis and terminal sequence publication.
 
 The product focuses on small public procedures and handoffs. It is not a general workflow orchestrator: no external action is executed. A source excerpt may express constraints that cannot all be satisfied. Those contradictions remain visible and block publication rather than being silently repaired by an assistant.
 
