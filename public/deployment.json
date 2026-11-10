@@ -1,8 +1,1 @@
-{
-  "address": "0x1586f91c56b4983E312898627444CdF0A8ddfdee",
-  "chain_id": 61999,
-  "protocol": "volta-1.1",
-  "source_sha256": "df3df3a1ca612772f9f971be91b153a480c7583a251c26e2f2570c3cb5736874",
-  "deployment_tx": "0x335b72b07e7fef9d5f22fd343e16e42cf7ff08bbb27b6715d79b0ae97e524bc4",
-  "example": "0x9e682033129d42b6e14e8ac6d8d0cb9358a23396:exhibition-20261026"
-}
+{"address":"0xD81546dC6478121D9bd1DEf95Ae4901b0DF196d8","chain_id":61999,"deployment_tx":"0x56e461fb8216f255e132909e02662d370d262b9d3ad43f60b25035389a3a3acd","example":"0xf2be2e617f5b3044c69f1075c2c28c8d6b1b7455:exhibition-honest-v2","protocol":"volta-2","source_sha256":"b28b44bb5cf7fc8b782d22514b538cd7a023c532fcf7a247ce0fc008af57f227"}
