@@ -4,3 +4,10 @@
 .arch-fallback{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 
 .mapping{display:flex;flex-wrap:wrap;gap:5px;margin:12px 0 18px}.mapping span{font-size:7px;letter-spacing:.07em;padding:6px 7px;border:1px solid #cbbda5;color:#71654f}
+.source-line{font-size:10px;letter-spacing:.17em;line-height:1.7;font-weight:500;margin-top:16px}
+.source-pending,.source-neutral{color:#8a7b64}
+.source-verified{color:#5d6750}
+.source-bad{color:var(--red)}
+.source-url{overflow-wrap:anywhere}
+.source-blocked{font-size:10px;line-height:1.7;color:var(--red);margin-top:8px}
+#sourceStatus blockquote{font-size:16px}
