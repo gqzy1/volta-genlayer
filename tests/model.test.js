@@ -1,7 +1,7 @@
 import {abi} from 'genlayer-js';
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {fixture,fixtureEdges,checkOrder,levels,validateDraft,escapeHtml,sourceDisplay,sourceStatusHtml} from '../src/model.js';
+import {fixture,fixtureEdges,checkOrder,levels,validateDraft,escapeHtml,sourceDisplay,sourceStatusHtml,contractExplorerUrl,contractLabel} from '../src/model.js';
 test('publication order observes every prerequisite',()=>assert.deepEqual(checkOrder(['S1','S2','S3','S4','S5'],fixtureEdges),[]));
 test('early opening exposes the final prerequisite',()=>assert.deepEqual(checkOrder(['S5','S1','S2','S3','S4'],fixtureEdges),[['S4','S5']]));
 test('parallel steps remain in one level',()=>assert.deepEqual(levels(['S1','S2','S3'],[['S1','S3'],['S2','S3']]),{levels:[['S1','S2'],['S3']],blocked:[]}));
@@ -64,4 +64,11 @@ test('matched quote is escaped in the source display',()=>{
   const html=sourceStatusHtml(reviewFor({status:'VERIFIED',url:'https://example.org/x',fetched_length:10,matched_quote:'<img src=x onerror=alert(1)>',reason:'EXCERPT_FOUND'}));
   assert.doesNotMatch(html,/<img/);
   assert.match(html,/&lt;img/);
+});
+test('canonical contract address links to the Studionet explorer',()=>{
+  assert.equal(contractExplorerUrl('0xD81546dC6478121D9bd1DEf95Ae4901b0DF196d8'),'https://explorer-studio.genlayer.com/address/0xD81546dC6478121D9bd1DEf95Ae4901b0DF196d8');
+  assert.equal(contractLabel('0xD81546dC6478121D9bd1DEf95Ae4901b0DF196d8'),'CONTRACT 0xD81546dC6478121D9bd1DEf95Ae4901b0DF196d8');
+  assert.equal(contractExplorerUrl(''),'');
+  assert.equal(contractExplorerUrl('not-an-address'),'');
+  assert.equal(contractExplorerUrl('0xD81546dC6478121D9bd1DEf95Ae4901b0DF196d'),'' );
 });

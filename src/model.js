@@ -4,7 +4,13 @@ export function levels(ids,edges){let rest=[...ids],out=[];while(rest.length){co
 export const fixtureEdges=[['S1','S2'],['S2','S3'],['S3','S4'],['S4','S5']];
 export function validateDraft(d){if(!d.title?.trim()||d.title.length>100)throw Error('Give this procedure a title of 3–100 characters.');if(d.title.trim().length<3)throw Error('Title needs at least 3 characters.');if(d.source.length<40||d.source.length>10000)throw Error('Use a source excerpt of 40–10,000 characters.');if(d.steps.length<2||d.steps.length>6||d.steps.some(s=>s.text.length<3||s.text.length>240))throw Error('Use 2–6 distinct steps, each 3–240 characters.');if(new Set(d.steps.map(s=>s.text.trim().toLowerCase())).size!==d.steps.length)throw Error('Step descriptions must be distinct.');if(d.source_url&&(!d.source_url.startsWith('https://')||d.source_url.length>400))throw Error('The optional source locator must be an HTTPS URL.');return d;}
 export const escapeHtml=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-// Source verification display (volta-2). A review is only ever read from a
+// Canonical contract identity. The address is deployment identity, not a
+// result value, so it may be shown before any readback. It is always taken
+// from public/deployment.json, never hard-coded in the app; a malformed or
+// missing address yields an empty link and the footer keeps its placeholder.
+export function contractExplorerUrl(address){return /^0x[0-9a-fA-F]{40}$/.test(address||'')?'https://explorer-studio.genlayer.com/address/'+address:'';}
+export function contractLabel(address){return 'CONTRACT '+address;}
+
 // FINALIZED get_review readback; before any readback the caller passes null
 // and the display is a neutral placeholder — never a success state. The
 // mapping is exhaustive over the four contract statuses; an unknown or
